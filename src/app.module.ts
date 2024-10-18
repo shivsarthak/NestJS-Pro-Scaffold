@@ -12,6 +12,9 @@ import { redisStore } from 'cache-manager-ioredis-yet';
 import { Queues } from './queues';
 import configuration from './config/configuration';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthService } from './auth/auth.service';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -49,6 +52,8 @@ import { PrismaModule } from './prisma/prisma.module';
         adapter: BullMQAdapter,
       }),
     ),
+    AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
